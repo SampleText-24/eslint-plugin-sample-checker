@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-sample-text-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "sample plugin",
   "keywords": [
     "eslint",
@@ -17,6 +17,7 @@
     "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
+    "micromatch": "^4.0.5",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {

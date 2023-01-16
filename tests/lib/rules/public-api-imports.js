@@ -35,6 +35,33 @@ ruleTester.run("public-api-imports", rule, {
       errors: [],
       options: aliasOptions,
     },
+    {
+      filename: 'C:\\Code\\react\\project\\src\\entities\\file.test.ts\\',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing';",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:/Code/react/project/src/entities/file.test.ts/',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing';",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:\\Code\\react\\project\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing';",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
   ],
 
   invalid: [
@@ -42,6 +69,42 @@ ruleTester.run("public-api-imports", rule, {
       code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/model/slices/addNewCommentSlice';",
       errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)"}],
       options: aliasOptions,
+    },
+    {
+      filename: 'C:\\Code\\react\\project\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing/file.tsx';",
+      errors: [{message: 'Абсолютный импорт разрешен только из Public API (index.ts)'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:/Code/react/project/src/entities/StoreDecorator.tsx',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing/file.tsx';",
+      errors: [{message: 'Абсолютный импорт разрешен только из Public API (index.ts)'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:\\Code\\react\\project\\src\\entities\\forbidden.ts',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing';",
+      errors: [{message: 'Тестовые данные необходимо импортировать из Public API (testing.ts)'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C://Code/react/project/src/entities/forbidden.ts',
+      code: "import { addNewCommentActions, addNewCommentReducer } from '@/entities/Article/testing';",
+      errors: [{message: 'Тестовые данные необходимо импортировать из Public API (testing.ts)'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
     },
   ],
 });
