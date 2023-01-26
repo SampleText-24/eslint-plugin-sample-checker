@@ -78,5 +78,16 @@ ruleTester.run("path-checker", rule, {
         },
       ],
     },
+    {
+      filename: 'C:\\Code\\react\\project\\src\\shared\\config\\tests\\componentRender\\componentRender.tsx',
+      code: "import i18nForTests from '@/shared/config/i18n/i18nForTests';",
+      errors: [{ message: "В одном слайсе должны быть относительные пути."}],
+      output: "import i18nForTests from '../../i18n/i18nForTests';",
+      options: [
+        {
+          alias: '@'
+        },
+      ],
+    },
   ],
 });
